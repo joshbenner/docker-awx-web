@@ -1,12 +1,7 @@
 FROM krallin/centos-tini:7
 
-ENV AWX_VERSION=devel \
-    AWX_SECRET=changeme \
-    DOCKERIZE_VERSION=v0.5.0 \
-    ALLOWED_HOSTS=* \
-    CLUSTER_HOST_ID=awx
-
-RUN yum -y install epel-release && \
+RUN export AWX_VERSION=devel && \
+    yum -y install epel-release && \
     yum -y localinstall http://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm && \
     yum -y update && \
     # Workaround, see: https://bugs.centos.org/view.php?id=13669&nbn=8
